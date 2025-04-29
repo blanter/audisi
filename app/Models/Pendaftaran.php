@@ -8,6 +8,7 @@ class Pendaftaran extends Model
 {
     protected $fillable = [
         'nama_lengkap',
+        'judul',
         'jenis_karya',
         'tema',
         'storyboard_path',

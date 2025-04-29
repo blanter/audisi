@@ -1,0 +1,87 @@
+.custom-table label {
+    font-size: 14px;
+    font-weight: 600;
+}
+.custom-table select, .custom-table textarea, .custom-table input {
+    border-radius: 10px;
+    border: 1px solid #000;
+    margin: 10px 0 0;
+}
+.custom-table input.custom-upload {
+    padding: 5px;
+    font-size: 15px;
+}
+.small-button,a.small-button,button.small-button,.custom-table button[type='submit'] {
+    border-radius: 20px;
+    padding: 10px 30px;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+}
+.small-button:hover,a.small-button:hover,button.small-button:hover,.custom-table button[type='submit']:hover {
+    background:#555;
+}
+.colored-box .title-box {
+    font-size: 15px;
+}
+.colored-box .number-box {
+    font-size: 30px;
+}
+.colored-box:nth-child(4) {
+    background: #5dd66b;
+}
+.colored-box:nth-child(3) {
+    background: #f6bb56;
+}
+.colored-box:nth-child(2) {
+    background: #eda7fe;
+}
+.colored-box:nth-child(1) {
+    background: #9d9bff;
+}
+.colored-box {
+    background: #eee;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1.5px solid #000;
+    color: #000;
+    font-weight: 600;
+    box-shadow: inset 0 -20px rgb(0 0 0 / 9%);
+    padding-bottom: 40px;
+}
+.colored-dashboard {
+    margin: 15px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+}
+h3.small-heading {
+    font-weight: 600;
+}
+.diff-p5 {
+    padding: 1.25rem 0;
+}
+.simple-footer span {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    display: block;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width:680px){
+    .colored-dashboard {
+        margin:10px 0;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .diff-p5 {
+        padding: 1.25rem;
+    }
+    .simple-footer span {
+        font-size:11px;
+        margin: 10px 0 0;
+    }
+}

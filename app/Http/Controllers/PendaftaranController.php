@@ -22,6 +22,7 @@ class PendaftaranController extends Controller
     {
         $validated = $request->validate([
             'nama_lengkap' => 'required|string|max:255',
+            'judul' => 'required|string|max:255',
             'jenis_karya' => 'required|in:Stage,Showcase,Video',
             'tema' => 'required|in:alam,sosial,english,forum,campuran',
             'storyboard' => 'required|image|max:8192',
@@ -35,7 +36,12 @@ class PendaftaranController extends Controller
 
         Pendaftaran::create($validated);
 
-        return redirect()->route('pendaftaran.index')->with('success', 'Pendaftaran berhasil!');
+        return redirect()->route('pendaftaran.success')->with('success', 'Selamat Pendaftaran kamu berhasil!');
+    }
+
+    public function success()
+    {
+        return view('pendaftaran.success');
     }
 
     public function show(Pendaftaran $pendaftaran)
@@ -45,6 +51,7 @@ class PendaftaranController extends Controller
 
     public function edit(Pendaftaran $pendaftaran)
     {
+        //$pendaftaran = Pendaftaran::find($pendaftaran);
         return view('pendaftaran.edit', compact('pendaftaran'));
     }
 
@@ -52,6 +59,7 @@ class PendaftaranController extends Controller
     {
         $validated = $request->validate([
             'nama_lengkap' => 'required|string|max:255',
+            'judul' => 'required|string|max:255',
             'jenis_karya' => 'required|in:Stage,Showcase,Video',
             'tema' => 'required|in:alam,sosial,english,forum,campuran',
             'storyboard' => 'nullable|image|max:8192',

@@ -18,6 +18,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/pendaftaran', PendaftaranController::class)->only(['index', 'create', 'store']);
+// Route publik (akses tanpa login)
+Route::get('/pendaftaran', [PendaftaranController::class, 'create'])->name('pendaftaran.create');
+Route::post('/pendaftaran', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+
+Route::get('/terdaftar/{pendaftaran}', [PendaftaranController::class, 'show'])->name('pendaftaran.show');
+Route::get('/pendaftaran-berhasil', [PendaftaranController::class, 'success'])->name('pendaftaran.success');
+
+// Route yang membutuhkan login
+Route::middleware(['auth'])->group(function () {
+    Route::get('/terdaftar', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+    Route::get('/pendaftaran/edit/{pendaftaran}', [PendaftaranController::class, 'edit'])->name('pendaftaran.edit');
+    Route::put('/pendaftaran/edit/{pendaftaran}', [PendaftaranController::class, 'update'])->name('pendaftaran.update');
+    Route::delete('/terdaftar/hapus/{pendaftaran}', [PendaftaranController::class, 'destroy'])->name('pendaftaran.destroy');
+});
 
 require __DIR__.'/auth.php';
