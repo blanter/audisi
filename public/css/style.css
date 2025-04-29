@@ -87,7 +87,7 @@ h3.small-heading {
 .custom-list span.rounded-full:nth-child(2) {
     background: #f6bb56;
 }
-.custom-list .status-1 {
+.custom-list .status-1,.custom-list .status-2 {
     background: #d1ffd6;
 }
 .custom-filter button {
@@ -123,6 +123,34 @@ a.fixed-button {
     padding: 0;
     text-align: center;
     line-height: 50px;
+}
+button.custom-check {
+    background: #22c55e;
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+.custom-pagination .relative {
+    background: #fff !important;
+    color: #000 !important;
+    font-weight: 600;
+}
+.custom-pagination p.leading-5 {
+    color: #555;
+}
+.custom-pagination span[aria-current="page"] span.relative {
+    background: #000000 !important;
+    color: #fff !important;
+}
+.custom-no {
+    padding: 10px;
+    background: #ffe1de;
+    color: #000;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 10px;
 }
 
 /* RESPONSIVE */

@@ -1,7 +1,7 @@
-@section('title', 'Pendaftar Audisi')
+@section('title', 'Penjurian Audisi')
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Pendaftar Audisi</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Penjurian Audisi</h2>
     </x-slot>
 
     <div class="pt-1 pb-5">

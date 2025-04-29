@@ -6,7 +6,7 @@ use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Auth;
 
-class PendaftaranController extends Controller
+class JuriController extends Controller
 {
     public function index(Request $request)
     {
@@ -29,12 +29,7 @@ class PendaftaranController extends Controller
 
         $pendaftarans = $query->latest()->paginate(5);
 
-        return view('pendaftaran.index', compact('pendaftarans'));
-    }
-
-    public function create()
-    {
-        return view('pendaftaran.create');
+        return view('penjurian.index', compact('pendaftarans'));
     }
 
     public function store(Request $request)
@@ -55,12 +50,7 @@ class PendaftaranController extends Controller
 
         Pendaftaran::create($validated);
 
-        return redirect()->route('pendaftaran.success')->with('success', 'Selamat Pendaftaran kamu berhasil!');
-    }
-
-    public function success()
-    {
-        return view('pendaftaran.success');
+        return back()->with('success', 'Selamat Pendaftaran kamu berhasil!');
     }
 
     public function show(Pendaftaran $pendaftaran)
@@ -105,34 +95,5 @@ class PendaftaranController extends Controller
         } else {
             return back();
         }
-    }
-
-    public function destroy(Pendaftaran $pendaftaran)
-    {
-        if(Auth::user()->role == "admin"){
-            // Hapus file lama jika ada
-            if ($pendaftaran->storyboard_path) {
-                \Storage::disk('public')->delete($pendaftaran->storyboard_path);
-            }
-            if ($pendaftaran->penilaian_guru_path) {
-                \Storage::disk('public')->delete($pendaftaran->penilaian_guru_path);
-            }
-
-            // Hapus data
-            $pendaftaran->delete();
-
-            return redirect()->route('pendaftaran.index')->with('success', 'Data pendaftaran berhasil dihapus.');
-        } else {
-            return back();
-        }
-    }
-
-    public function check(Request $request, Pendaftaran $pendaftaran)
-    {
-        $pendaftaran->update([
-            'status' => '1',
-        ]);
-
-        return back()->with('success', 'Berhasil check selesai audisi!');
     }
 }
