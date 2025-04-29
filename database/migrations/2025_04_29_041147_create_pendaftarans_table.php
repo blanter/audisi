@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('penilaian_guru_path');
             $table->string('perkiraan_durasi');
             $table->text('list_prop');
+            $table->integer('status');
             $table->timestamps();
         });
     }

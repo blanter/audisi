@@ -42,7 +42,7 @@
 .colored-box {
     background: #eee;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1.5px solid #000;
     color: #000;
     font-weight: 600;
@@ -70,6 +70,60 @@ h3.small-heading {
     padding: 15px;
     border-radius: 20px;
 }
+.custom-list .items-start h3 {
+    color: #000;
+}
+.custom-list .items-start {
+    border: 1.5px solid #000;
+}
+.custom-list span.rounded-full {
+    color: #000;
+    font-weight: 500;
+    font-size: 13px;
+}
+.custom-list span.rounded-full:nth-child(1) {
+    background: #a7d8fe;
+}
+.custom-list span.rounded-full:nth-child(2) {
+    background: #f6bb56;
+}
+.custom-list .status-1 {
+    background: #d1ffd6;
+}
+.custom-filter button {
+    width: 100%;
+    border-radius: 20px;
+    border: 1.5px solid #000;
+    font-weight:500;
+    background:#000;
+}
+.custom-filter {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr .5fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+.custom-filter select,.custom-filter input {
+    border-radius: 20px;
+    border: 1.5px solid #000;
+    font-size: 14px;
+    font-weight: 600;
+}
+.custom-filter label {
+    margin: 0 0 5px;
+}
+a.fixed-button {
+    position: fixed;
+    z-index: 99;
+    bottom: 40px;
+    right: 40px;
+    font-size: 40px;
+    width: 55px;
+    height: 55px;
+    padding: 0;
+    text-align: center;
+    line-height: 50px;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width:680px){
@@ -83,5 +137,8 @@ h3.small-heading {
     .simple-footer span {
         font-size:11px;
         margin: 10px 0 0;
+    }
+    .custom-filter {
+        grid-template-columns:100%;
     }
 }

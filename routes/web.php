@@ -24,6 +24,7 @@ Route::post('/pendaftaran', [PendaftaranController::class, 'store'])->name('pend
 
 Route::get('/terdaftar/{pendaftaran}', [PendaftaranController::class, 'show'])->name('pendaftaran.show');
 Route::get('/pendaftaran-berhasil', [PendaftaranController::class, 'success'])->name('pendaftaran.success');
+Route::put('/terdaftar/check/{pendaftaran}', [PendaftaranController::class, 'check'])->name('pendaftaran.check');
 
 // Route yang membutuhkan login
 Route::middleware(['auth'])->group(function () {

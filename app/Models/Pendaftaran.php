@@ -15,5 +15,6 @@ class Pendaftaran extends Model
         'penilaian_guru_path',
         'perkiraan_durasi',
         'list_prop',
+        'status',
     ];
 }

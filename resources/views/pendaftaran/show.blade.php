@@ -31,7 +31,11 @@
                         </tr>
                         <tr>
                             <td class="py-2 font-semibold align-top">List Prop / Link Drive</td>
-                            <td class="py-2"><pre class="bg-gray-100 p-2 rounded whitespace-pre-wrap">{{ $pendaftaran->list_prop }}</pre></td>
+                            <td class="py-2"><pre class="bg-gray-100 p-2 rounded whitespace-pre-wrap">{!! Str::of(e($pendaftaran->list_prop))->replaceMatches(
+                                '/(https?:\/\/[^\s]+)/',
+                                fn($match) => '<a href="' . $match[0] . '" class="text-blue-600 underline" target="_blank" rel="noopener noreferrer">' . $match[0] . '</a>'
+                            )->replace("\n", '<br>') !!}
+                            </pre></td>
                         </tr>
                     </tbody>
                 </table>                

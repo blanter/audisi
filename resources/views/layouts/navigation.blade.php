@@ -56,6 +56,12 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        @if(Auth::user()->role == "admin")
+                        <x-dropdown-link href="/pengaturan-web">
+                            {{ __('Pengaturan Web') }}
+                        </x-dropdown-link>
+                        @endif
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
