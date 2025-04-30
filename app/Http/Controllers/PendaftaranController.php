@@ -8,6 +8,7 @@ use Auth;
 
 class PendaftaranController extends Controller
 {
+    // HALAMAN PESERTA AUDISI
     public function index(Request $request)
     {
         $query = Pendaftaran::query();
@@ -32,11 +33,13 @@ class PendaftaranController extends Controller
         return view('pendaftaran.index', compact('pendaftarans'));
     }
 
+    // HALAMAN PENDAFTARAN AUDISI
     public function create()
     {
         return view('pendaftaran.create');
     }
 
+    // PERINTAH SIMPAN PENDAFTARAN
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -58,16 +61,19 @@ class PendaftaranController extends Controller
         return redirect()->route('pendaftaran.success')->with('success', 'Selamat Pendaftaran kamu berhasil!');
     }
 
+    // HALAMAN PENDAFTARAN BERHASIL
     public function success()
     {
         return view('pendaftaran.success');
     }
 
+    // HALAMAN DETAIL PESERTA
     public function show(Pendaftaran $pendaftaran)
     {
         return view('pendaftaran.show', compact('pendaftaran'));
     }
 
+    // HALAMAN EDIT PENDAFTARAN
     public function edit(Pendaftaran $pendaftaran)
     {
         if(Auth::user()->role == "admin"){
@@ -77,6 +83,7 @@ class PendaftaranController extends Controller
         }
     }
 
+    // PERINTAH UPDATE PENDAFTARAN
     public function update(Request $request, Pendaftaran $pendaftaran)
     {
         if(Auth::user()->role == "admin"){
@@ -107,6 +114,7 @@ class PendaftaranController extends Controller
         }
     }
 
+    // PERINTAH HAPUS PENDAFTARAN
     public function destroy(Pendaftaran $pendaftaran)
     {
         if(Auth::user()->role == "admin"){
@@ -127,12 +135,12 @@ class PendaftaranController extends Controller
         }
     }
 
+    // PERINTAH CHECKMARK PESERTA
     public function check(Request $request, Pendaftaran $pendaftaran)
     {
         $pendaftaran->update([
             'status' => '1',
         ]);
-
         return back()->with('success', 'Berhasil check selesai audisi!');
     }
 }

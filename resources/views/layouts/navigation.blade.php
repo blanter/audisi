@@ -18,13 +18,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="/terdaftar">
-                        {{ __('Terdaftar') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="/penjurian">
-                        {{ __('Penjurian') }}
+                    <x-nav-link href="/peserta">
+                        {{ __('Peserta Audisi') }}
                     </x-nav-link>
                 </div>
                 @endauth
@@ -55,12 +50,6 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-
-                        @if(Auth::user()->role == "admin")
-                        <x-dropdown-link href="/pengaturan-web">
-                            {{ __('Pengaturan Web') }}
-                        </x-dropdown-link>
-                        @endif
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

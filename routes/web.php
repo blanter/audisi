@@ -29,17 +29,18 @@ Route::get('/pendaftaran-berhasil', [PendaftaranController::class, 'success'])->
 
 // Route PENDAFTARAN yang membutuhkan login
 Route::middleware(['auth'])->group(function () {
-    Route::get('/terdaftar', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
-    Route::get('/terdaftar/{pendaftaran}', [PendaftaranController::class, 'show'])->name('pendaftaran.show');
-    Route::put('/terdaftar/check/{pendaftaran}', [PendaftaranController::class, 'check'])->name('pendaftaran.check');
+    Route::get('/peserta', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+    Route::get('/peserta/{pendaftaran}', [PendaftaranController::class, 'show'])->name('pendaftaran.show');
+    Route::put('/peserta/check/{pendaftaran}', [PendaftaranController::class, 'check'])->name('pendaftaran.check');
     Route::get('/pendaftaran/edit/{pendaftaran}', [PendaftaranController::class, 'edit'])->name('pendaftaran.edit');
     Route::put('/pendaftaran/edit/{pendaftaran}', [PendaftaranController::class, 'update'])->name('pendaftaran.update');
-    Route::delete('/terdaftar/hapus/{pendaftaran}', [PendaftaranController::class, 'destroy'])->name('pendaftaran.destroy');
+    Route::delete('/peserta/hapus/{pendaftaran}', [PendaftaranController::class, 'destroy'])->name('pendaftaran.destroy');
 });
 
 // Route PENJURIAN
 Route::middleware('auth')->group(function () {
     Route::get('/penjurian', [JuriController::class, 'index'])->name('penjurian.index');
+    Route::get('/peserta/nilai/{pendaftaran}', [JuriController::class, 'show'])->name('penjurian.show');
 });
 
 require __DIR__.'/auth.php';
