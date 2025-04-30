@@ -8,7 +8,7 @@
 
     <div class="py-6">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white p-6 rounded shadow">
+            <div class="bg-white p-6">
                 <table class="w-full border border-gray-300 rounded overflow-hidden">
                     <tbody class="divide-y divide-gray-200">
                         <tr>

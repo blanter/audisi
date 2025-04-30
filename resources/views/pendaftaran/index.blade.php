@@ -96,7 +96,7 @@
                             @endif
                             @if(Auth::user()->role == "user")
                             <!-- CHECK HANYA USER -->
-                                <div class="flex flex-col items-end text-sm space-y-1">
+                                <!--<div class="flex flex-col items-end text-sm space-y-1">
                                     @if($pendaftaran->status == 0)
                                     <form action="{{ route('pendaftaran.check', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menandakan selesai?');">
                                         @csrf
@@ -104,7 +104,7 @@
                                         <button type="submit" class="text-green-500 hover:underline custom-check">Check</button>
                                     </form>
                                     @endif
-                                </div>
+                                </div>-->
                             @endif
                             @if(Auth::user()->role == "juri")
                             <!-- NILAI HANYA JURI -->
