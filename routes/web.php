@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/penjurian', [JuriController::class, 'index'])->name('penjurian.index');
     Route::get('/peserta/nilai/{pendaftaran}', [JuriController::class, 'show'])->name('penjurian.show');
+    Route::post('/showcases/store', [JuriController::class, 'showcase'])->name('penjurian.showcase');
 });
 
 require __DIR__.'/auth.php';

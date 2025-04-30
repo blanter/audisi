@@ -3,32 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
+use App\Models\Showcase;
 use Illuminate\Http\Request;
 use Auth;
 
 class JuriController extends Controller
 {
 
-    // SIMPAN PENILAIAN
-    public function store(Request $request)
+    // SIMPAN PENILAIAN SHOWCASE
+    public function showcase(Request $request)
     {
-        $validated = $request->validate([
-            'nama_lengkap' => 'required|string|max:255',
-            'judul' => 'required|string|max:255',
-            'jenis_karya' => 'required|in:Stage,Showcase,Video',
-            'tema' => 'required|in:alam,sosial,english,forum,campuran',
-            'storyboard' => 'required|image|max:8192',
-            'penilaian_guru' => 'required|image|max:8192',
-            'perkiraan_durasi' => 'required|string|max:255',
-            'list_prop' => 'required|string',
+        $data = $request->all();
+        $total = array_sum(array_map(fn($v) => (int) $v['score'], $request->penilaian));
+
+        Showcase::create([
+            'id_peserta' => $data['id_peserta'],
+            'id_juri' => $data['id_juri'],
+            'penilaian' => $data['penilaian'],
+            'total_score' => $total,
         ]);
 
-        $validated['storyboard_path'] = $request->file('storyboard')->store('storyboards', 'public');
-        $validated['penilaian_guru_path'] = $request->file('penilaian_guru')->store('penilaian_guru', 'public');
-
-        Pendaftaran::create($validated);
-
-        return back()->with('success', 'Selamat Pendaftaran kamu berhasil!');
+        return redirect()->back()->with('success', 'Penilaian berhasil disimpan.');
     }
 
     // SHOW HALAMAN PESERTA UNTUK PENILAIAN

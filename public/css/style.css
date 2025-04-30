@@ -225,9 +225,40 @@ body.overflow-hidden {
     height: 16px;
     margin: 0 auto;
 }
+.custom-penilaian {
+    padding: 20px;
+    border: 1.5px solid #000;
+    border-radius: 20px;
+    margin: 0 0 10px;
+}
+.custom-penilaian label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+.custom-penilaian select {
+    width: 100%;
+    border-radius: 10px;
+    font-size: 15px;
+}
+.custom-penilaian .form-check label {
+    display: inline-block;
+}
+#assessment-area h5 {
+    font-size: 15px;
+    margin: 0 0 10px;
+    font-weight: 500;
+}
+.custom-showtable {
+    font-size:15px
+}
 
 /* RESPONSIVE */
 @media screen and (max-width:680px){
+    .custom-showtable tr {
+        display: grid;
+    }
     .custom-informasi {
         margin:0 15px;
     }
