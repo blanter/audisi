@@ -253,6 +253,17 @@ body.overflow-hidden {
 .custom-showtable {
     font-size:15px
 }
+.custom-penilaian .form-check:hover {
+    background: #eee;
+}
+.custom-penilaian .form-check input, .custom-penilaian .form-check label {
+    cursor: pointer;
+}
+.custom-penilaian .form-check {
+    cursor: pointer;
+    padding: 5px 10px 0;
+    border-radius: 10px;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width:680px){

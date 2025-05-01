@@ -35,7 +35,7 @@ function renderAssessment() {
                             type="${section.type}"
                             name="${inputName}"
                             value="${opt.value}"
-                            id="${name}_${j}" required>
+                            id="${name}_${j}">
                         <label class="form-check-label" for="${name}_${j}">
                             ${opt.label} (${opt.value} poin)
                         </label>
