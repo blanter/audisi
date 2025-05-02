@@ -45,7 +45,7 @@
     background: #eee;
     padding: 20px;
     border-radius: 12px;
-    border: 1.5px solid #000;
+    border: 2px solid #000;
     color: #000;
     font-weight: 600;
     box-shadow: inset 0 -20px rgb(0 0 0 / 9%);
@@ -76,7 +76,7 @@ h3.small-heading {
     color: #000;
 }
 .custom-list .items-start {
-    border: 1.5px solid #000;
+    border: 2px solid #000;
 }
 .custom-list span.rounded-full {
     color: #000;
@@ -96,7 +96,7 @@ h3.small-heading {
 .custom-filter button {
     width: 100%;
     border-radius: 20px;
-    border: 1.5px solid #000;
+    border: 2px solid #000;
     font-weight:500;
     background:#000;
     letter-spacing:.4px;
@@ -109,7 +109,7 @@ h3.small-heading {
 }
 .custom-filter select,.custom-filter input {
     border-radius: 20px;
-    border: 1.5px solid #000;
+    border: 2px solid #000;
     font-size: 14px;
     font-weight: 600;
 }
@@ -230,7 +230,7 @@ body.overflow-hidden {
 }
 .custom-penilaian {
     padding: 20px;
-    border: 1.5px solid #000;
+    border: 2px solid #000;
     border-radius: 20px;
     margin: 0 0 10px;
 }
@@ -267,9 +267,17 @@ body.overflow-hidden {
     padding: 5px 10px 0;
     border-radius: 10px;
 }
+.custom-pagebox {
+    border: 2px solid #000;
+    border-radius: 20px;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width:680px){
+    .custom-pagebox {
+        border: none;
+        border-radius: 20px;
+    }
     .custom-showtable tr {
         display: grid;
     }

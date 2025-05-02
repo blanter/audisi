@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pendaftaran;
 use App\Models\Nilai;
 use App\Models\User;
+use App\Models\AssessmentConfig;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -13,15 +14,39 @@ class JuriController extends Controller
     // SHOW HALAMAN PESERTA UNTUK PENILAIAN
     public function show(Pendaftaran $pendaftaran)
     {
-        if(Auth::user()->role == "juri" || Auth::user()->role == "admin"){
-            $datanilai = 0;
+        if (Auth::user()->role == "juri" || Auth::user()->role == "admin") {
             $users = User::get(['id','name']);
             $datanilai = Nilai::where('id_peserta', $pendaftaran->id)->sum('total_score');
             $penilaians = Nilai::where('id_peserta', $pendaftaran->id)->latest()->paginate(5);
-            return view('penjurian.show', compact(['pendaftaran','datanilai','penilaians','users']));
-        } else {
-            return back();
+
+            // Ambil semua config terkait jenis karya peserta
+            $configs = AssessmentConfig::where('jenis_karya', $pendaftaran->jenis_karya)->get();
+
+            // Bentuk struktur assessmentData[level][work] = [section...]
+            $assessmentData = [];
+
+            foreach ($configs as $config) {
+                $level = $config->level;
+                $work = $config->art_type;
+
+                $assessmentData[$level][$work][] = [
+                    'type' => $config->type,
+                    'title' => $config->title,
+                    'options' => $config->options
+                ];
+            }
+
+            return view('penjurian.show', compact([
+                'pendaftaran', 
+                'datanilai', 
+                'penilaians', 
+                'users', 
+                'configs',
+                // untuk javascript
+            ]))->with('assessmentData', json_encode($assessmentData));
         }
+
+        return back();
     }
 
     // SIMPAN PENILAIAN

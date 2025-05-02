@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\JuriController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AssessmentConfigController;
 use Illuminate\Support\Facades\Route;
 
 // Route Default
@@ -44,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/peserta/nilai/{pendaftaran}', [JuriController::class, 'show'])->name('penjurian.show');
     Route::post('/penilaian/store/{pendaftaran}', [JuriController::class, 'penilaian'])->name('penjurian.penilaian');
     Route::delete('/penilaian/hapus/{penilaian}', [JuriController::class, 'destroy'])->name('penjurian.destroy');
+
+    // New Route Assesment
+    Route::resource('standar-nilai', AssessmentConfigController::class);
 });
 
 require __DIR__.'/auth.php';

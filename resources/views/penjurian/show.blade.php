@@ -14,7 +14,7 @@
                 </div>
             @endif
             <div class="bg-white p-6">
-                @if(Auth::user()->role == "juri")
+                @if(Auth::user()->role != "user")
                 <!-- FORM PENILAIAN -->
                 <h3 class="small-heading pt-1 pb-5">Penilaian <b>{{$pendaftaran->jenis_karya}}</b></h3>
                 <form id="form-penilaian" class="custom-penilaian" method="POST" action="{{ route('penjurian.penilaian', $pendaftaran) }}">
@@ -38,10 +38,7 @@
                 
                     <input type="hidden" name="id_peserta" value="{{ $pendaftaran->id }}" required>
                     <input type="hidden" name="id_juri" value="{{ Auth::user()->id }}" required>
-                
                     <div id="assessment-area"></div>
-                
-                    <!-- HIDDEN INPUT UNTUK DATA PENILAIAN YANG AKAN DIKIRIM -->
                     <input type="hidden" name="penilaian" id="penilaian-hidden">
                 
                     <button id="submit-btn" type="button" class="small-button btn btn-primary mt-4">
@@ -51,291 +48,15 @@
                 @endif
 
                 <!-- SCRIPT DATA PENILAIAN -->
-                @if($pendaftaran->jenis_karya == "Showcase")            
                 <script>
-                    const assessmentData = {
-                        intermediate: {
-                            "Menggambar": [
-                                {
-                                    type: "checkbox",
-                                    title: "Sketsa",
-                                    options: [
-                                        { label: "Sketsa perencanaan", value: 10 },
-                                        { label: "Ukuran media gambar minimal A3", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "checkbox",
-                                    title: "Tehnik",
-                                    options: [
-                                        { label: "Tehnik dan Keterampilan", value: 20 },
-                                        { label: "Warna dan Komposisi", value: 20 },
-                                        { label: "Originalitas", value: 20 },
-                                        { label: "Penyelesaian dan Detail", value: 20 }
-                                    ]
-                                }
-                            ],
-                            "Ice Cream Stick": [
-                                {
-                                    type: "radio",
-                                    title: "Sketsa",
-                                    options: [
-                                        { label: "Tidak ada sketsa rencana pembuatan", value: 0 },
-                                        { label: "Ada sketsa rencana pembuatan", value: 30 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Dimensi",
-                                    options: [
-                                        { label: "30x30x30 cm", value: 15 },
-                                        { label: "30x30x30 cm dan lebih", value: 30 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Coating",
-                                    options: [
-                                        { label: "Tidak diberi coating", value: 0 },
-                                        { label: "Diberi coating", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Hardboard",
-                                    options: [
-                                        { label: "Tidak pakai alas", value: 0 },
-                                        { label: "Bukan hardboard", value: 2 },
-                                        { label: "Hardboard tidak sesuai", value: 5 },
-                                        { label: "Hardboard sesuai", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Stempel Logo",
-                                    options: [
-                                        { label: "Tidak ada makers", value: 0 },
-                                        { label: "Ada makers mark", value: 20 }
-                                    ]
-                                }
-                            ],
-                            "Album Photography": [
-                                {
-                                    type: "radio",
-                                    title: "Teknik Fotografi",
-                                    options: [
-                                        { label: "Komposisi lemah atau tidak konsisten", value: 4 },
-                                        { label: "Komposisi cukup baik tetapi banyak ruang untuk perbaikan", value: 6 },
-                                        { label: "Mayoritas foto dengan komposisi baik", value: 8 },
-                                        { label: "Komposisi sangat kuat dan konsisten", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Pencahayaan",
-                                    options: [
-                                        { label: "Pencahayaan tidak mendukung", value: 4 },
-                                        { label: "Pencahayaan cukup tetapi kurang maksimal", value: 6 },
-                                        { label: "Cahaya mendukung subjek dengan kekurangan minor", value: 8 },
-                                        { label: "Cahaya kreatif dan konsisten", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Teknik Fokus dan Ketajaman",
-                                    options: [
-                                        { label: "Banyak foto tidak fokus atau buram", value: 4 },
-                                        { label: "Beberapa foto kurang tajam atau tidak fokus", value: 6 },
-                                        { label: "Fokus baik pada sebagian besar foto", value: 8 },
-                                        { label: "Fokus tajam dan sesuai di semua foto", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Kreativitas dan Konsep",
-                                    options: [
-                                        { label: "Ide kurang menarik atau klise", value: 6 },
-                                        { label: "Ide umum namun dieksekusi baik", value: 9 },
-                                        { label: "Ide cukup orisinal dengan elemen menarik", value: 12 },
-                                        { label: "Ide sangat orisinal dan menonjol", value: 15 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Ekspresi dan Penyampaian Pesan",
-                                    options: [
-                                        { label: "Pesan sulit dipahami", value: 6 },
-                                        { label: "Pesan tidak konsisten", value: 9 },
-                                        { label: "Pesan cukup jelas", value: 12 },
-                                        { label: "Pesan tersampaikan jelas dan kuat", value: 15 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Presentasi Buku",
-                                    options: [
-                                        { label: "Tata letak acak", value: 4 },
-                                        { label: "Tata letak cukup tetapi kurang terstruktur", value: 6 },
-                                        { label: "Tata letak baik", value: 8 },
-                                        { label: "Tata letak estetis dan konsisten", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Kualitas Produksi Buku",
-                                    options: [
-                                        { label: "Kualitas produksi rendah", value: 4 },
-                                        { label: "Produksi cukup", value: 6 },
-                                        { label: "Produksi baik", value: 8 },
-                                        { label: "Produksi berkualitas", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Narasi atau Keterangan Foto",
-                                    options: [
-                                        { label: "Tidak ada narasi", value: 2 },
-                                        { label: "Narasi tidak relevan", value: 3 },
-                                        { label: "Narasi cukup jelas", value: 4 },
-                                        { label: "Narasi singkat, jelas", value: 5 }
-                                    ]
-                                },
-                                {
-                                    type: "radio",
-                                    title: "Pemahaman Tema",
-                                    options: [
-                                        { label: "Tema sulit dipahami", value: 6 },
-                                        { label: "Sebagian foto kurang relevan", value: 9 },
-                                        { label: "Mayoritas foto sesuai tema", value: 12 },
-                                        { label: "Semua foto sangat relevan", value: 15 }
-                                    ]
-                                }
-                            ],
-                            "Karya dari Bahan Bekas": [
-                                {
-                                    type: "checkbox",
-                                    title: "Wayang Golek dari Botol Bekas",
-                                    options: [
-                                        { label: "Sketsa perencanan", value: 10 },
-                                        { label: "Bahan 100% daur ulang", value: 40 },
-                                        { label: "Kerapihan dan teknis", value: 20 },
-                                        { label: "Fungsi wayang", value: 20 },
-                                        { label: "Pemahaman karakter wayang", value: 10 }
-                                    ]
-                                },
-                                {
-                                    type: "checkbox",
-                                    title: "Wayang Kulit dari Kardus",
-                                    options: [
-                                        { label: "Sketsa perencanaan", value: 10 },
-                                        { label: "Bahan 80% kardus", value: 40 },
-                                        { label: "Kerapihan dan teknis", value: 20 },
-                                        { label: "Fungsi wayang", value: 20 },
-                                        { label: "Pemahaman karakter wayang", value: 10 }
-                                    ]
-                                }
-                            ]
-                        },
-                        beginner: {
-                            "Pottery": [
-                                {
-                                    type: "checkbox",
-                                    title: "Penilaian",
-                                    options: [
-                                        { label: "Sketsa perencanaan pembuatan", value: 20 },
-                                        { label: "Sudah dibakar 500 derajat celcius", value: 20 },
-                                        { label: "Diberi lapisan pelindung (pilox clear / cat warna )", value: 25 },
-                                        { label: "Karya diberi makers mark, atau stempel logo pembuat", value: 15 },
-                                        { label: "Storyboard - kertas 80 - 100 gram, diberi support Hardboard", value: 20 },
-                                    ]
-                                }
-                            ],
-                            "Batik": [
-                                {
-                                    type: "checkbox",
-                                    title: "Penilaian",
-                                    options: [
-                                        { label: "Sketsa perencanaan pembuatan", value: 20 },
-                                        { label: "30 cm x 30 cm", value: 20 },
-                                        { label: "Karya diberi makers mark, atau stempel logo pembuat", value: 10 },
-                                        { label: "Penampilan di Gallery", value: 50 },
-                                    ]
-                                }
-                            ],
-                            "Stick Ice Cream": [
-                                {
-                                    type: "checkbox",
-                                    title: "Penilaian",
-                                    options: [
-                                        { label: "Sketsa rencana pembuatan", value: 20 },
-                                        { label: "Dimensi sesuai standar", value: 20 },
-                                        { label: "Diberi coating pelindung", value: 10 },
-                                        { label: "Dasar hardboard sesuai", value: 10 },
-                                        { label: "Makers mark / stempel", value: 20 },
-                                        { label: "Kerumitan karya", value: 20 }
-                                    ]
-                                }
-                            ],
-                            "Experimental Tech": [
-                                {
-                                    type: "checkbox",
-                                    title: "Penilaian",
-                                    options: [
-                                        { label: "Sketsa perencanaan pembuatan", value: 20 },
-                                        { label: "Base karya dari hardboard, dengan margin 5 cm dari dimensi karya, dan tebal 1 cm", value: 20 },
-                                        { label: "Storyboard Lengkap Step by Step, ukuran A3", value: 60 }
-                                    ]
-                                }
-                            ],
-                            "Kerajinan Kayu": [
-                                {
-                                    type: "checkbox",
-                                    title: "Penilaian",
-                                    options: [
-                                        { label: "Sketsa perencanaan pembuatan", value: 20 },
-                                        { label: "Minimal Dimensi 15 cm x 15 cm x 15 cm sampai 30 cm x 30 cm x 30 cm", value: 20 },
-                                        { label: "Karya diberi makers mark, atau stempel logo pembuat", value: 10 },
-                                        { label: "Coating Pelitur", value: 10 },
-                                        { label: "Kreatifitas dan Kerumitan", value: 30 },
-                                        { label: "Penampilan di Gallery", value: 10 },
-                                    ]
-                                }
-                            ],
-                            "Painting / Drawing": [
-                                {
-                                    type: "checkbox",
-                                    title: "Penilaian",
-                                    options: [
-                                        { label: "Sketsa perencanaan pembuatan", value: 10 },
-                                        { label: "Ukuran 15 cm x 15 cm", value: 30 },
-                                        { label: "Makers mark / stempel logo", value: 20 },
-                                        { label: "Frame", value: 20 },
-                                        { label: "Kartu penjelasan", value: 20 }
-                                    ]
-                                }
-                            ],
-                            "Menjahit": [
-                                {
-                                    type: "checkbox",
-                                    title: "Penilaian",
-                                    options: [
-                                        { label: "Sketsa rencana pembuatan", value: 20 },
-                                        { label: "Kerapian jahitan", value: 30 },
-                                        { label: "Ketepatan teknik", value: 30 },
-                                        { label: "Kesesuaian tema", value: 20 }
-                                    ]
-                                }
-                            ]
-                        }
-                    };
-                </script> 
-                @endif
+                    const assessmentData = {!! $assessmentData !!};
+                </script>
 
                 <!-- HISTORY -->
                 <h3 class="small-heading pt-3 pb-5">History Penilaian</h3>
                 <div class="custom-list">
                 @forelse ($penilaians as $penilaian)
-                <div class="bg-white border rounded-xl shadow-sm p-4 flex justify-between items-start mb-2">
+                <div class="bg-white border rounded-xl shadow-sm p-4 flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-semibold text-gray-800">
                             @php

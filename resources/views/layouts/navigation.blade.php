@@ -9,7 +9,7 @@
                         <img class="block h-9 w-auto fill-current text-gray-800" src="https://cms.lifebookacademy.sch.id/img/logo/lifebook-white.png" alt="Lifebook Academy"/>
                     </a>
                 </div>
-
+                
                 @auth
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -22,6 +22,13 @@
                         {{ __('Peserta Audisi') }}
                     </x-nav-link>
                 </div>
+                @if(Auth::user()->role == "admin")
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('standar-nilai.index')" :active="request()->routeIs('standar-nilai.index')">
+                        {{ __('Standar Nilai') }}
+                    </x-nav-link>
+                </div>
+                @endif
                 @endauth
             </div>
 

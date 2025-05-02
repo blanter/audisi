@@ -8,6 +8,7 @@ use App\Models\Pendaftaran;
 
 class DashboardController extends Controller
 {
+    // INDEX DASHBOARD
     public function index()
     {
         $jumlahpeserta = Pendaftaran::count();
