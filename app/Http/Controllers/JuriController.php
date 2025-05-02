@@ -87,7 +87,7 @@ class JuriController extends Controller
     // PERINTAH HAPUS NILAI
     public function destroy(Nilai $penilaian)
     {
-        if(Auth::user()->role == "admin"){
+        if(Auth::user()->role != "user"){
             // Hapus data
             $penilaian->delete();
 

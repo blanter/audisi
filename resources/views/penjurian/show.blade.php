@@ -98,7 +98,7 @@
                         <a class="text-green-500 hover:underline custom-check">
                             <b>{{ $penilaian->total_score }}</b>
                         </a>
-                        @if(Auth::user()->role == "admin")
+                        @if(Auth::user()->role == "admin" || $penilaian->id_juri == Auth::user()->id)
                         <form action="{{ route('penjurian.destroy', $penilaian) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                             @csrf
                             @method('DELETE')
