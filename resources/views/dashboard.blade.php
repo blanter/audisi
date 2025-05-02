@@ -15,7 +15,7 @@
                 <h3 class="small-heading">Data Summary</h3>
                 <div class="colored-dashboard">
                     <div class="colored-box">
-                        <div class="number-box">10</div>
+                        <div class="number-box">{{$jumlahpeserta}}</div>
                         <div class="title-box">Peserta Audisi</div>
                     </div>
                     <div class="colored-box">

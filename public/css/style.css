@@ -17,6 +17,8 @@
     background: #000;
     color: #fff;
     font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .5px;
 }
 .small-button:hover,a.small-button:hover,button.small-button:hover,.custom-table button[type='submit']:hover {
     background:#555;
@@ -82,10 +84,10 @@ h3.small-heading {
     font-size: 13px;
     padding:5px 15px;
 }
-.custom-list span.rounded-full:nth-child(1) {
+.custom-list span.custom-label-blue {
     background: #a7d8fe;
 }
-.custom-list span.rounded-full:nth-child(2) {
+.custom-list span.custom-label-yellow {
     background: #f6bb56;
 }
 .custom-list .status-1,.custom-list .status-2 {
@@ -97,6 +99,7 @@ h3.small-heading {
     border: 1.5px solid #000;
     font-weight:500;
     background:#000;
+    letter-spacing:.4px;
 }
 .custom-filter {
     display: grid;

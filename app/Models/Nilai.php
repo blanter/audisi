@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Showcase extends Model
+class Nilai extends Model
 {
-    protected $fillable = ['id_peserta', 'id_juri', 'penilaian', 'total_score'];
+    protected $fillable = ['id_peserta', 'id_juri', 'penilaian', 'level', 'tipe', 'total_score'];
     protected $casts = [
         'penilaian' => 'array',
     ];

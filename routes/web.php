@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\JuriController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 // Route Default
@@ -11,9 +12,9 @@ Route::get('/', function () {
 });
 
 // Route Dashboard with Verified
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // Route Profile
 Route::middleware('auth')->group(function () {
@@ -41,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/penjurian', [JuriController::class, 'index'])->name('penjurian.index');
     Route::get('/peserta/nilai/{pendaftaran}', [JuriController::class, 'show'])->name('penjurian.show');
-    Route::post('/showcases/store', [JuriController::class, 'showcase'])->name('penjurian.showcase');
+    Route::post('/penilaian/store/{pendaftaran}', [JuriController::class, 'penilaian'])->name('penjurian.penilaian');
 });
 
 require __DIR__.'/auth.php';

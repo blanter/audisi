@@ -63,10 +63,10 @@
                                     <a href="{{ route('pendaftaran.show', $pendaftaran) }}">{{ $pendaftaran->nama_lengkap }}</a>
                                 </h3>
                                 <div class="mt-2 flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 rounded-full text-sm bg-blue-100 text-blue-700">
+                                    <span class="px-2 py-1 rounded-full text-sm bg-blue-100 text-blue-700 custom-label-blue">
                                         {{ $pendaftaran->jenis_karya }}
                                     </span>
-                                    <span class="px-2 py-1 rounded-full text-sm bg-green-100 text-green-700">
+                                    <span class="px-2 py-1 rounded-full text-sm bg-green-100 text-green-700 custom-label-yellow">
                                         {{ ucfirst($pendaftaran->tema) }}
                                     </span>
                                 </div>
