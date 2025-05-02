@@ -14,6 +14,7 @@
                 </div>
             @endif
             <div class="bg-white p-6">
+                @if(Auth::user()->role == "juri")
                 <!-- FORM PENILAIAN -->
                 <h3 class="small-heading pt-1 pb-5">Penilaian <b>{{$pendaftaran->jenis_karya}}</b></h3>
                 <form id="form-penilaian" class="custom-penilaian" method="POST" action="{{ route('penjurian.penilaian', $pendaftaran) }}">
@@ -47,6 +48,7 @@
                         Simpan Penilaian
                     </button>
                 </form>    
+                @endif
 
                 <!-- SCRIPT DATA PENILAIAN -->
                 @if($pendaftaran->jenis_karya == "Showcase")            
@@ -375,6 +377,13 @@
                         <a class="text-green-500 hover:underline custom-check">
                             <b>{{ $penilaian->total_score }}</b>
                         </a>
+                        @if(Auth::user()->role == "admin")
+                        <form action="{{ route('penjurian.destroy', $penilaian) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-500 hover:underline">Hapus</button>
+                        </form>
+                        @endif
                     </div>
                 </div>
                 @empty

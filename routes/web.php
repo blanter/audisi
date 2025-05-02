@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/penjurian', [JuriController::class, 'index'])->name('penjurian.index');
     Route::get('/peserta/nilai/{pendaftaran}', [JuriController::class, 'show'])->name('penjurian.show');
     Route::post('/penilaian/store/{pendaftaran}', [JuriController::class, 'penilaian'])->name('penjurian.penilaian');
+    Route::delete('/penilaian/hapus/{penilaian}', [JuriController::class, 'destroy'])->name('penjurian.destroy');
 });
 
 require __DIR__.'/auth.php';

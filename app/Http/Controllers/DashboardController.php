@@ -11,6 +11,9 @@ class DashboardController extends Controller
     public function index()
     {
         $jumlahpeserta = Pendaftaran::count();
-        return view('dashboard', compact('jumlahpeserta'));
+        $jumlahaudisi = Pendaftaran::where('status','0')->count();
+        $jumlahselesai = Pendaftaran::where('status', '!=', '0')->count();
+        $jumlahsukses = Pendaftaran::where('status','2')->count();
+        return view('dashboard', compact(['jumlahpeserta','jumlahaudisi','jumlahselesai','jumlahsukses']));
     }
 }

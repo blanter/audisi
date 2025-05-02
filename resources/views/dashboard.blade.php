@@ -19,15 +19,15 @@
                         <div class="title-box">Peserta Audisi</div>
                     </div>
                     <div class="colored-box">
-                        <div class="number-box">10</div>
-                        <div class="title-box">Selesai Audisi 1</div>
+                        <div class="number-box">{{$jumlahaudisi}}</div>
+                        <div class="title-box">Belum Audisi</div>
                     </div>
                     <div class="colored-box">
-                        <div class="number-box">10</div>
-                        <div class="title-box">Selesai Audisi 2</div>
+                        <div class="number-box">{{$jumlahselesai}}</div>
+                        <div class="title-box">Selesai Audisi</div>
                     </div>
                     <div class="colored-box">
-                        <div class="number-box">10</div>
+                        <div class="number-box">{{$jumlahsukses}}</div>
                         <div class="title-box">Production</div>
                     </div>
                 </div>

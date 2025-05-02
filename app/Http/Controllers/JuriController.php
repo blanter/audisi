@@ -13,7 +13,7 @@ class JuriController extends Controller
     // SHOW HALAMAN PESERTA UNTUK PENILAIAN
     public function show(Pendaftaran $pendaftaran)
     {
-        if(Auth::user()->role == "juri"){
+        if(Auth::user()->role == "juri" || Auth::user()->role == "admin"){
             $datanilai = 0;
             $users = User::get(['id','name']);
             $datanilai = Nilai::where('id_peserta', $pendaftaran->id)->sum('total_score');
@@ -27,31 +27,48 @@ class JuriController extends Controller
     // SIMPAN PENILAIAN
     public function penilaian(Request $request, Pendaftaran $pendaftaran)
     {
-        $request->validate([
-            'level' => 'required',
-            'work' => 'required',
-            'id_peserta' => 'required|integer',
-            'id_juri' => 'required|integer',
-            'penilaian' => 'required|json',
-        ]);
+        if(Auth::user()->role == "juri" || Auth::user()->role == "admin"){
+            $request->validate([
+                'level' => 'required',
+                'work' => 'required',
+                'id_peserta' => 'required|integer',
+                'id_juri' => 'required|integer',
+                'penilaian' => 'required|json',
+            ]);
 
-        $penilaian = json_decode($request->penilaian, true);
+            $penilaian = json_decode($request->penilaian, true);
 
-        $total = collect($penilaian)->sum('score');
+            $total = collect($penilaian)->sum('score');
 
-        Nilai::create([
-            'id_peserta' => $request->id_peserta,
-            'id_juri' => $request->id_juri,
-            'penilaian' => $penilaian, // pastikan field ini JSON di migration
-            'level' => $request->level,
-            'tipe' => $request->work,
-            'total_score' => $total,
-        ]);
+            Nilai::create([
+                'id_peserta' => $request->id_peserta,
+                'id_juri' => $request->id_juri,
+                'penilaian' => $penilaian, // pastikan field ini JSON di migration
+                'level' => $request->level,
+                'tipe' => $request->work,
+                'total_score' => $total,
+            ]);
 
-        $pendaftaran->update([
-            'status' => '1',
-        ]);
+            $pendaftaran->update([
+                'status' => '1',
+            ]);
 
-        return redirect()->back()->with('success', 'Penilaian berhasil disimpan.');
+            return redirect()->back()->with('success', 'Penilaian berhasil disimpan.');
+        } else {
+            return back();
+        }
+    }
+
+    // PERINTAH HAPUS NILAI
+    public function destroy(Nilai $penilaian)
+    {
+        if(Auth::user()->role == "admin"){
+            // Hapus data
+            $penilaian->delete();
+
+            return back()->with('success', 'Data penilaian berhasil dihapus.');
+        } else {
+            return back();
+        }
     }
 }

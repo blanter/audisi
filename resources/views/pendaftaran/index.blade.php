@@ -92,6 +92,7 @@
                                         <button type="submit" class="text-green-500 hover:underline">Check</button>
                                     </form>
                                     @endif
+                                    <a href="{{ route('penjurian.show', $pendaftaran) }}" class="text-blue-500 hover:underline">Nilai</a>
                                 </div>
                             @endif
                             @if(Auth::user()->role == "user")
