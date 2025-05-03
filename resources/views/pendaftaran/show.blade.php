@@ -42,15 +42,16 @@
                     </tbody>
                 </table>                
 
+                @if(Auth::user()->role != "user")
                 <div class="mb-4">
                     <strong>Storyboard:</strong><br>
                     <img src="{{ asset('storage/' . $pendaftaran->storyboard_path) }}" alt="Storyboard" class="max-w-full h-auto">
                 </div>
-
                 <div class="mb-4">
                     <strong>Hasil Penilaian Guru:</strong><br>
                     <img src="{{ asset('storage/' . $pendaftaran->penilaian_guru_path) }}" alt="Penilaian Guru" class="max-w-full h-auto">
                 </div>
+                @endif
 
                 <div class="mt-6">
                     <a class="small-button" href="{{ route('pendaftaran.index') }}" class="text-blue-500 hover:underline">Kembali ke daftar</a>

@@ -15,8 +15,10 @@
                 <h3 class="small-heading">Data Summary</h3>
                 <div class="colored-dashboard">
                     <div class="colored-box">
-                        <div class="number-box">{{$jumlahpeserta}}</div>
-                        <div class="title-box">Peserta Audisi</div>
+                        <a href="{{route('pendaftaran.index')}}" title="Peserta Audisi">
+                            <div class="number-box">{{$jumlahpeserta}}</div>
+                            <div class="title-box">Peserta Audisi</div>
+                        </a>
                     </div>
                     <div class="colored-box">
                         <div class="number-box">{{$jumlahaudisi}}</div>
@@ -43,20 +45,20 @@
                             datasets: [
                                 {
                                     label: 'Stage',
-                                    data: [10, 20, 30, 15, 25],
-                                    backgroundColor: 'rgba(123, 104, 238, 0.7)', // light purple
+                                    data: @json($statistik['Stage']),
+                                    backgroundColor: 'rgba(123, 104, 238, 0.7)',
                                     borderRadius: 5
                                 },
                                 {
                                     label: 'Showcase',
-                                    data: [30, 25, 10, 20, 10],
-                                    backgroundColor: 'rgba(221, 160, 221, 0.7)', // light violet
+                                    data: @json($statistik['Showcase']),
+                                    backgroundColor: 'rgba(221, 160, 221, 0.7)',
                                     borderRadius: 5
                                 },
                                 {
                                     label: 'Video',
-                                    data: [5, 15, 20, 10, 30],
-                                    backgroundColor: 'rgba(144, 238, 144, 0.7)', // light green
+                                    data: @json($statistik['Video']),
+                                    backgroundColor: 'rgba(144, 238, 144, 0.7)',
                                     borderRadius: 5
                                 }
                             ]
@@ -65,8 +67,7 @@
                             responsive: true,
                             scales: {
                                 y: {
-                                    beginAtZero: true,
-                                    max: 100
+                                    beginAtZero: true
                                 }
                             },
                             plugins: {
@@ -77,7 +78,7 @@
                         }
                     });
                 </script>
-
+                
                 <!-- END -->
             </div>
         </div>

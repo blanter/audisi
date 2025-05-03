@@ -44,11 +44,11 @@
                         </a>
         
                         @if (Route::has('register'))
-                            <!--<a
+                            <a
                                 href="{{ route('register') }}"
                                 class="inline-block px-5 py-1.5 light:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] light:border-[#3E3E3A] light:hover:border-[#62605b] rounded-sm text-sm leading-normal">
                                 Register
-                            </a>-->
+                            </a>
                         @endif
                     @endauth
                 </nav>
@@ -58,7 +58,7 @@
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
                 <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white light:bg-[#161615] light:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] light:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 font-medium"><b>Audisi Production Lifebook Academy</b></h1>
+                    <h1 class="mb-1 font-medium"><b>Production Lifebook Academy</b></h1>
                     <p class="mb-2 text-[#706f6c] light:text-[#A1A09A]"><b>29th</b> Production dengan tema "Kreatopia".</p>
                     <ul class="flex flex-col mb-4 lg:mb-6">
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] light:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">

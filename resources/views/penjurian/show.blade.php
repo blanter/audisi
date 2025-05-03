@@ -14,6 +14,7 @@
                 </div>
             @endif
             <div class="bg-white p-6">
+                @if($pendaftaran->status != 2)
                 @if(Auth::user()->role != "user")
                 <!-- FORM PENILAIAN -->
                 <h3 class="small-heading pt-1 pb-5">Penilaian <b>{{$pendaftaran->jenis_karya}}</b></h3>
@@ -45,6 +46,7 @@
                         Simpan Penilaian
                     </button>
                 </form>    
+                @endif
                 @endif
 
                 <!-- SCRIPT DATA PENILAIAN -->
