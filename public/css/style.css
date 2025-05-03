@@ -320,9 +320,194 @@ body.overflow-hidden {
 .custom-box-qr .box-qr:nth-child(1) a {
     background: #9d9bff;
 }
+.box-qr svg {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px;
+}
+.custom-pagebg {
+    background: linear-gradient(to right top, #B182FF, #0066FF);
+    color: #fff;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position:relative;
+    overflow:hidden;
+}
+.custom-pagebg .custom-table label {
+    font-weight: 900;
+    text-shadow: 0 0 5px black;
+    font-size: 17px;
+    display: block;
+}
+.custom-pagebg .custom-table input {
+    display: block;
+    width: 100%;
+    margin: 0 0 20px;
+    border:2px solid #000;
+    color:#000;
+    text-align:center;
+}
+.home-generator {
+    position:relative;
+    z-index:9;
+    min-width: 300px;
+    text-shadow: 0 0 5px black;
+    font-weight:700;
+}
+.custom-pagebg .custom-table button {
+    cursor: pointer;
+}
+.only-reader {
+    margin: 30px 0;
+    background: #fff;
+    color: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+    text-shadow: 0 0 #000;
+    border:2px solid #000;
+}
+#reader {
+    border: none !important;
+}
+.custom-pagebox .custom-heading {
+    border: none;
+    text-shadow: 0 0 5px black;
+}
+#reader img {
+    margin:0 auto;
+}
+.myqr svg {
+    margin: 20px auto;
+    padding: 15px;
+    background: #fff;
+    border-radius: 20px;
+}
+.custom-pagebg .myname h2 {
+    margin: 5px 0;
+    font-size: 25px;
+}
+.svg-bee {
+    width: 220px;
+    position: absolute;
+    z-index: 2;
+    top: -35px;
+    right: 0;
+}
+.svg-leaf1 {
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    right: 120px;
+    transform: rotate(239deg);
+}
+.svg-leaf2 {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    transform: rotate(121deg);
+}
+.svg-leaf3 {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+}
+.svg-leaf4 {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 120px;
+}
+@keyframes bees{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(18px)}
+    100%{transform:translateY(0)}
+}
+.bees1, .bees2, .bees3, .bees4 {
+    animation-name:bees;
+    animation-iteration-count:infinite;
+}
+.bees1 {
+    position: fixed;
+    top: 50px;
+    right: 300px;
+    animation-duration:3s;
+}
+.bees2 {
+    position: fixed;
+    z-index: 1;
+    top: 100px;
+    right: 100px;
+    animation-duration:2s;
+}
+.bees3 {
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    right: 50px;
+    animation-duration:3.5s;
+}
+.bees4 {
+    position: fixed;
+    z-index: 9;
+    bottom: 150px;
+    left: 50px;
+    animation-duration:3.2s;
+}
+.home-generator .player-container {
+    width: 768px;
+    max-width: 100%;
+    background: transparent;
+    overflow: hidden;
+}
+#players {
+    padding: 15px;
+    max-height: 520px;
+    overflow-x: scroll;
+    list-style-type: none;
+    counter-reset: section;
+    position: relative;
+}
+.player-heading, .player-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    padding: 15px 30px;
+    background: #fff;
+    margin: 10px 0;
+    border-radius: 30px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 -1px 6px -2px rgb(0 0 0 / 5%);
+    color:#111;
+    text-shadow:none;
+}
+.player-score {
+    text-align: right;
+    font-size: 16px;
+}
+.player-list.no-grid {
+    display: block;
+}
+.player-list {
+    font-weight: 500;
+    font-size: 15px;
+    display: grid;
+    grid-template-columns: .2fr 1.8fr;
+    transition: transform 0.5s ease-in-out;
+}
+span.timeago {
+    font-size: 14px;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width:680px){
+    .custom-pagebox.custom-pagebg {
+        border: 2px solid #000;
+        margin: 5px;
+    }
     .custom-pagebox {
         border: none;
         border-radius: 20px;
@@ -344,7 +529,7 @@ body.overflow-hidden {
         font-size:11px;
         margin: 10px 0 0;
     }
-    .custom-filter,.custom-filter.custom-f3 {
+    .custom-filter,.custom-filter.custom-f3, .custom-box-qr {
         grid-template-columns:100%;
     }
 }
