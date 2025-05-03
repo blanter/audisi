@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/qr-tamu', [QRCodeController::class, 'qrindex'])->name('qrindex');
     Route::get('/qr-scan', [QRCodeController::class, 'qrscan'])->name('qrscan');
     Route::post('/submit-player', [QRCodeController::class, 'submit_player'])->name('submit.player');
-    Route::get('/players', [QRCodeController::class, 'players'])->name('players');
+    Route::get('/data-tamu', [QRCodeController::class, 'datatamu'])->name('datatamu');
 });
 
 // Route QRCode (NO LOGIN)

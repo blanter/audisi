@@ -67,8 +67,8 @@ class QRCodeController extends Controller
         return redirect()->back()->with('name', $name)->with('player', $getplayer+1);
     }
 
-    // PLAYERS
-    public function players()
+    // DATA TAMU
+    public function datatamu()
     {
         $getplayers = Player::all();
         return view('page.players',compact(['getplayers']));

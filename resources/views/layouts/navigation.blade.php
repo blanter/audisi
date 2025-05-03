@@ -12,23 +12,23 @@
                 
                 @auth
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-7 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-6 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-7 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-6 sm:flex">
                     <x-nav-link :href="route('pendaftaran.index')" :active="request()->routeIs('pendaftaran.index')">
                         {{ __('Peserta Audisi') }}
                     </x-nav-link>
                 </div>
                 @if(Auth::user()->role == "admin")
-                <div class="hidden space-x-8 sm:-my-px sm:ms-7 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-6 sm:flex">
                     <x-nav-link :href="route('standar-nilai.index')" :active="request()->routeIs('standar-nilai.index')">
                         {{ __('Standar Nilai') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-7 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-6 sm:flex">
                     <x-nav-link :href="route('qrindex')" :active="request()->routeIs('qrindex')">
                         {{ __('Data QR Tamu') }}
                     </x-nav-link>

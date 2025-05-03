@@ -10,15 +10,15 @@
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-6 custom-pagebox custom-pagebg">
                 <div class="bee-leaf">
-                    <div class="svg-bee"><img src="https://production.lifebookacademy.sch.id/public/img/bee.svg"/></div>
-                    <div class="svg-leaf1"><img src="https://production.lifebookacademy.sch.id/public/img/leaf1.svg"/></div>
-                    <div class="svg-leaf2"><img src="https://production.lifebookacademy.sch.id/public/img/leaf2.svg"/></div>
-                    <div class="svg-leaf3"><img src="https://production.lifebookacademy.sch.id/public/img/leaf3.svg"/></div>
-                    <div class="svg-leaf4"><img src="https://production.lifebookacademy.sch.id/public/img/leaf4.svg"/></div>
-                    <div class="bees1"><img src="https://production.lifebookacademy.sch.id/public/img/bees.svg"/></div>
-                    <div class="bees2"><img src="https://production.lifebookacademy.sch.id/public/img/bees.svg"/></div>
-                    <div class="bees3"><img src="https://production.lifebookacademy.sch.id/public/img/bees.svg"/></div>
-                    <div class="bees4"><img src="https://production.lifebookacademy.sch.id/public/img/bees.svg"/></div>
+                    <div class="svg-bee"><img src="{{ asset('/img/bee.svg') }}"/></div>
+                    <div class="svg-leaf1"><img src="{{ asset('/img/leaf1.svg') }}"/></div>
+                    <div class="svg-leaf2"><img src="{{ asset('/img/leaf2.svg') }}"/></div>
+                    <div class="svg-leaf3"><img src="{{ asset('/img/leaf3.svg') }}"/></div>
+                    <div class="svg-leaf4"><img src="{{ asset('/img/leaf4.svg') }}"/></div>
+                    <div class="bees1"><img src="{{ asset('/img/bees.svg') }}"/></div>
+                    <div class="bees2"><img src="{{ asset('/img/bees.svg') }}"/></div>
+                    <div class="bees3"><img src="{{ asset('/img/bees.svg') }}"/></div>
+                    <div class="bees4"><img src="{{ asset('/img/bees.svg') }}"/></div>
                 </div>
                 <div class="home-generator custom-table">
                     <div class="container">
