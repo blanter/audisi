@@ -135,12 +135,16 @@ class PendaftaranController extends Controller
         }
     }
 
-    // PERINTAH CHECKMARK PESERTA
+    // PERINTAH CHECKMARK PRODUCTION
     public function check(Request $request, Pendaftaran $pendaftaran)
     {
-        $pendaftaran->update([
-            'status' => '1',
-        ]);
-        return back()->with('success', 'Berhasil check selesai audisi!');
+        if(Auth::user()->role == "admin"){
+            $pendaftaran->update([
+                'status' => '2',
+            ]);
+            return back()->with('success', 'Berhasil check masuk production!');
+        } else {
+            return back();
+        }
     }
 }

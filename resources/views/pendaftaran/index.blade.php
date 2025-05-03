@@ -79,6 +79,13 @@
                             @if(Auth::user()->role == "admin")
                             <!-- EDIT, HAPUS, CHECK HANYA ADMIN -->
                                 <div class="flex flex-col items-end text-sm space-y-1">
+                                    @if($pendaftaran->status != 2)
+                                    <form action="{{ route('pendaftaran.check', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menandakan production?');">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="text-green-500 hover:underline custom-check">Check</button>
+                                    </form>
+                                    @endif
                                     <a href="{{ route('pendaftaran.edit', $pendaftaran) }}" class="text-yellow-500 hover:underline">Edit</a>
                                     @if($pendaftaran->status == 0)
                                     <form action="{{ route('pendaftaran.destroy', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
@@ -86,26 +93,9 @@
                                         @method('DELETE')
                                         <button type="submit" class="text-red-500 hover:underline">Hapus</button>
                                     </form>
-                                    <form action="{{ route('pendaftaran.check', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menandakan selesai?');">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="text-green-500 hover:underline">Check</button>
-                                    </form>
                                     @endif
                                     <a href="{{ route('penjurian.show', $pendaftaran) }}" class="text-blue-500 hover:underline">Nilai</a>
                                 </div>
-                            @endif
-                            @if(Auth::user()->role == "user")
-                            <!-- CHECK HANYA USER -->
-                                <!--<div class="flex flex-col items-end text-sm space-y-1">
-                                    @if($pendaftaran->status == 0)
-                                    <form action="{{ route('pendaftaran.check', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menandakan selesai?');">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" class="text-green-500 hover:underline custom-check">Check</button>
-                                    </form>
-                                    @endif
-                                </div>-->
                             @endif
                             @if(Auth::user()->role == "juri")
                             <!-- NILAI HANYA JURI -->

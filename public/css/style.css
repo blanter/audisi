@@ -90,8 +90,11 @@ h3.small-heading {
 .custom-list span.custom-label-yellow {
     background: #f6bb56;
 }
-.custom-list .status-1,.custom-list .status-2 {
+.custom-list .status-1 {
     background: #d1ffd6;
+}
+.custom-list .status-2 {
+    background: #f8eaff;
 }
 .custom-filter button {
     width: 100%;

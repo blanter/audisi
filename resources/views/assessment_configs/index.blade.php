@@ -21,7 +21,7 @@
 
             <form method="GET" action="{{ route('standar-nilai.index') }}" class="custom-filter mb-6 custom-f3">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Cari Nama / Judul</label>
+                    <label class="block text-sm font-medium text-gray-700">Cari Tipe / Title</label>
                     <input type="text" name="q" value="{{ request('q') }}" class="border rounded px-3 py-2 w-full" placeholder="Masukkan kata kunci...">
                 </div>
                 <div>
