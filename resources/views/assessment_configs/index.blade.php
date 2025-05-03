@@ -9,20 +9,43 @@
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{ route('standar-nilai.create') }}" class="small-button bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">+ Tambah Standar</a>
+            <a href="{{ route('standar-nilai.create') }}" class="fixed-button small-button bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                +
+            </a>
 
             @if (session('success'))
                 <div class="mb-4 p-4 bg-green-100 text-green-800 rounded">
                     {{ session('success') }}
                 </div>
             @endif
+
+            <form method="GET" action="{{ route('standar-nilai.index') }}" class="custom-filter mb-6 custom-f3">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Cari Nama / Judul</label>
+                    <input type="text" name="q" value="{{ request('q') }}" class="border rounded px-3 py-2 w-full" placeholder="Masukkan kata kunci...">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Jenis Karya</label>
+                    <select name="jenis_karya" class="border rounded px-3 py-2 w-full">
+                        <option value="">-- Semua --</option>
+                        <option value="Stage" {{ request('jenis_karya') == 'Stage' ? 'selected' : '' }}>Stage</option>
+                        <option value="Showcase" {{ request('jenis_karya') == 'Showcase' ? 'selected' : '' }}>Showcase</option>
+                        <option value="Video" {{ request('jenis_karya') == 'Video' ? 'selected' : '' }}>Video</option>
+                    </select>
+                </div>
+                <div class="self-end">
+                    <button type="submit" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900">
+                        Filter
+                    </button>
+                </div>
+            </form>
             
             @foreach($configs as $level => $types)
                 <div class="mt-6 custom-list">
-                    <h2 class="text-xl font-semibold text-green-700">{{ ucfirst($level) }}</h2>
+                    <h2 class="text-xl font-semibold custom-heading custom-{{ ucfirst($level) }}">{{ ucfirst($level) }}</h2>
                     @foreach($types as $artType => $criteria)
                         <div class="mt-4">
-                            <h3 class="text-lg font-bold text-gray-700">{{ $artType }}</h3>
+                            <h3 class="text-lg font-bold text-gray-700 mb-3">{{ $artType }}</h3>
                             @foreach($criteria as $item)
                                 <div class="border p-4 mb-2 border rounded-xl shadow-sm items-start">
                                     <p class="font-medium">{{ $item->title }} ({{ $item->type }})</p>

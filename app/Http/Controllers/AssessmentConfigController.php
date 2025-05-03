@@ -7,9 +7,26 @@ use App\Models\AssessmentConfig;
 
 class AssessmentConfigController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $configs = AssessmentConfig::all()->groupBy(['jenis_karya', 'art_type']);
+        $query = AssessmentConfig::query();
+
+        // Filter berdasarkan kata kunci (nama atau judul)
+        if ($request->filled('q')) {
+            $search = $request->input('q');
+            $query->where(function ($q) use ($search) {
+                $q->where('art_type', 'like', '%' . $search . '%')
+                ->orWhere('title', 'like', '%' . $search . '%');
+            });
+        }
+
+        // Filter berdasarkan jenis_karya
+        if ($request->filled('jenis_karya')) {
+            $query->where('jenis_karya', $request->input('jenis_karya'));
+        }
+
+        $configs = $query->get()->groupBy(['jenis_karya', 'art_type']);
+
         return view('assessment_configs.index', compact('configs'));
     }
 
