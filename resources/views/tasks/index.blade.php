@@ -8,13 +8,12 @@
 
     <div class="pt-1 pb-5">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            @if (session('success'))
-                <div class="mb-4 p-4 bg-green-100 text-green-800 rounded">
-                    {{ session('success') }}
-                </div>
-            @endif
-
             <div class="p-4">
+                @if (session('success'))
+                    <div class="mb-4 p-4 bg-green-100 text-green-800 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 @if(Auth::user()->role == "admin")
                 <div class="mb-4">
                     <a href="{{ route('tasks.create') }}" class="fixed-button small-button bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
@@ -96,7 +95,17 @@
                         },
                         body: JSON.stringify({ status: isChecked ? 'done' : 'progress' })
                     }).then(res => res.json())
-                    .then(data => console.log(data.message));
+                    .then(data => {
+                        console.log(data.message);
+
+                        // Tambahkan atau ganti class berdasarkan status
+                        const listItem = document.querySelector(`#check-${taskId}${index}`).closest('li');
+
+                        if (listItem) {
+                            listItem.classList.remove('custom-check-done', 'custom-check-progress');
+                            listItem.classList.add(isChecked ? 'custom-check-done' : 'custom-check-progress');
+                        }
+                    });
                 }
             
                 // Fungsi toggle dropdown

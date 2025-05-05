@@ -89,12 +89,24 @@ class TaskController extends Controller
             'nama_panitia' => 'required|string|max:255',
             'nama_task' => 'required|string|max:255',
             'penanggung_jawab' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'anggota' => 'nullable|array',
-            'anggota.*' => 'string',
+            'anggota' => 'nullable|string',
+            'deskripsi' => 'required|array',
+            'deskripsi.*.judul' => 'required|string',
+            'deskripsi.*.status' => 'required',
         ]);
 
-        $task->update($validated);
+        // Pisahkan anggota dari input teks menjadi array
+        $anggotaArray = array_filter(array_map('trim', explode(',', $request->anggota)));
+
+        // Update task
+        $task->update([
+            'nama_panitia' => $validated['nama_panitia'],
+            'nama_task' => $validated['nama_task'],
+            'penanggung_jawab' => $validated['penanggung_jawab'],
+            'anggota' => $anggotaArray,
+            'deskripsi' => $validated['deskripsi'],
+        ]);
+
         return redirect()->route('tasks.index')->with('success', 'Task berhasil diperbarui.');
     }
 
