@@ -113,6 +113,9 @@ h3.small-heading {
 .custom-filter.custom-f3 {
     grid-template-columns: 1fr 1fr .5fr;
 }
+.custom-filter.custom-f0 {
+    grid-template-columns: 100%;
+}
 .custom-filter select,.custom-filter input {
     border-radius: 20px;
     border: 2px solid #000;
@@ -501,6 +504,76 @@ body.overflow-hidden {
 span.timeago {
     font-size: 14px;
 }
+.custom-taskbox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin:40px 0;
+}
+.custom-boxtask {
+    border: 2px solid #000;
+    position: relative;
+    cursor:default;
+    box-shadow:none;
+    transition:all .3s ease-in-out;
+}
+.custom-boxtask:hover {
+    border-color:#6b4da0;
+    border-bottom:7px solid #6b4da0;
+    transform: translateY(-3px);
+}
+.custom-boxtask ul {
+    margin: 0;
+}
+.custom-taskbox label span {
+    margin: 0 5px;
+    font-size: 13px;
+}
+.custom-taskbox .custom-task-check {
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 7px 15px;
+    border-radius: 20px;
+    margin:5px 0;
+    font-size:13px;
+    text-transform:capitalize;
+}
+.custom-taskbox .custom-task-check:hover {
+    background:#eee;
+}
+.custom-task-check label {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+.custom-task-check.custom-check-done {
+    background: #eee;
+    text-decoration: line-through;
+}
+.custom-taskfooter {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 10px;
+}
+.custom-elipsis {
+    width:20px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    border-radius:100%;
+}
+.custom-elipsis:hover {
+    background:#eee;
+}
+.custom-elipsis svg {
+    width:5px;
+    margin:0 auto;
+}
+.custom-btn-elipsis {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width:680px){
@@ -529,7 +602,7 @@ span.timeago {
         font-size:11px;
         margin: 10px 0 0;
     }
-    .custom-filter,.custom-filter.custom-f3, .custom-box-qr {
+    .custom-filter,.custom-filter.custom-f3, .custom-box-qr, .custom-taskbox {
         grid-template-columns:100%;
     }
 }

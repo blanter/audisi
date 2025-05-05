@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link href='{{asset('/img/lifebookico.png')}}' rel='icon' type='image/x-icon'/>
 
         <title>@yield('title', 'Audisi Production')</title>
 
@@ -37,7 +38,7 @@
 
             <!-- Footer -->
             <div class="simple-footer max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <span>© 2025 - Production Lifebook Academy (App v0.04)</span>
+                <span>© 2025 - Production Lifebook Academy (App v0.07)</span>
             </div>
         </div>
     </body>

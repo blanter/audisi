@@ -6,6 +6,7 @@ use App\Http\Controllers\JuriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AssessmentConfigController;
 use App\Http\Controllers\QRCodeController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 // Route Default
@@ -51,6 +52,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/qr-scan', [QRCodeController::class, 'qrscan'])->name('qrscan');
     Route::post('/submit-player', [QRCodeController::class, 'submit_player'])->name('submit.player');
     Route::get('/data-tamu', [QRCodeController::class, 'datatamu'])->name('datatamu');
+
+    // Route Tasks
+    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    Route::post('/tasks/store', [TaskController::class, 'store'])->name('tasks.store');
+    Route::post('/tasks/{task}/deskripsi/{index}/status', [TaskController::class, 'updateDeskripsiStatus'])->name('tasks.updateDeskripsiStatus');
+    Route::get('/tasks/edit/{task}', [TaskController::class, 'edit'])->name('tasks.edit');
+    Route::put('/tasks/edit/{task}', [TaskController::class, 'update'])->name('tasks.update');
+    Route::delete('/tasks/delete/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 });
 
 // Route QRCode (NO LOGIN)

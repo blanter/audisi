@@ -33,6 +33,11 @@
                         {{ __('Data QR Tamu') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-6 sm:flex">
+                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.index')">
+                        {{ __('Tasks List') }}
+                    </x-nav-link>
+                </div>
                 @endif
                 @endauth
             </div>
