@@ -62,7 +62,7 @@
                             <div class="mb-2">
                                 <p class="text-sm mb-2">Anggota:
                                     @foreach ($task->anggota ?? [] as $anggota)
-                                        <span>{{ $anggota }}</span>
+                                        <span>{{ $anggota }}</span>, 
                                     @endforeach
                                 </p>
                             </div>

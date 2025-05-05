@@ -80,7 +80,7 @@
                             <!-- EDIT, HAPUS, CHECK HANYA ADMIN -->
                                 <div class="flex flex-col items-end text-sm space-y-1">
                                     @if($pendaftaran->status != 2)
-                                    <form action="{{ route('pendaftaran.check', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menandakan production?');">
+                                    <form action="{{ route('pendaftaran.check', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menandakan lulus production?');">
                                         @csrf
                                         @method('PUT')
                                         <button type="submit" class="text-green-500 hover:underline custom-check">Check</button>
