@@ -53,14 +53,15 @@
                                 $oldDeskripsi = old('deskripsi', $task->deskripsi ?? [['judul' => '', 'status' => 'progress']]);
                             @endphp
                             @foreach($oldDeskripsi as $i => $item)
-                                <div class="flex gap-2 mb-2">
-                                    <input type="text" name="deskripsi[{{ $i }}][judul]" class="w-full border rounded px-3 py-2 mt-1"
-                                           value="{{ $item['judul'] }}" placeholder="Nama Tugas" required>
-                                    <select name="deskripsi[{{ $i }}][status]" class="hidden">
-                                        <option value="progress" @selected($item['status'] === 'progress')>Progress</option>
-                                    </select>
-                                </div>
-                            @endforeach
+                            <div class="flex gap-2 mb-2 deskripsi-item">
+                                <input type="text" name="deskripsi[{{ $i }}][judul]" class="w-full border rounded px-3 py-2 mt-1"
+                                       value="{{ $item['judul'] }}" placeholder="Nama Tugas" required>
+                                <select name="deskripsi[{{ $i }}][status]" class="hidden">
+                                    <option value="{{ $item['status'] }}">{{ $item['status'] }}</option>
+                                </select>
+                                <button type="button" onclick="removeDeskripsi(this)" class="text-red-500 hover:text-red-700 text-sm px-2">Hapus</button>
+                            </div>
+                        @endforeach                        
                         </div>
                         <button type="button" onclick="addDeskripsi()" class="mt-2 bg-gray-300 text-sm px-2 py-1 rounded">+ Tambah Deskripsi</button>
                     </div>
@@ -75,19 +76,23 @@
 
             <script>
                 let index = {{ count($oldDeskripsi) }};
-
                 function addDeskripsi() {
                     const wrapper = document.getElementById('deskripsi-wrapper');
                     const html = `
-                    <div class="flex gap-2 mb-2">
+                    <div class="flex gap-2 mb-2 deskripsi-item">
                         <input type="text" name="deskripsi[${index}][judul]" class="w-full border rounded px-3 py-2 mt-1"
-                               placeholder="Nama Tugas" required>
+                            placeholder="Nama Tugas" required>
                         <select name="deskripsi[${index}][status]" class="hidden">
                             <option value="progress">Progress</option>
                         </select>
+                        <button type="button" onclick="removeDeskripsi(this)" class="text-red-500 hover:text-red-700 text-sm px-2">Hapus</button>
                     </div>`;
                     wrapper.insertAdjacentHTML('beforeend', html);
                     index++;
+                }
+                function removeDeskripsi(button) {
+                    const item = button.closest('.deskripsi-item');
+                    if (item) item.remove();
                 }
             </script>
         </div>
