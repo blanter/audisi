@@ -7,7 +7,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 p-3">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <a href="{{ route('standar-nilai.create') }}" class="fixed-button small-button bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                 +

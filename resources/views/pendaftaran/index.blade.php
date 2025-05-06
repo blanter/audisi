@@ -60,7 +60,21 @@
                         <div class="bg-white border rounded-xl shadow-sm p-4 flex justify-between items-start status-{{ $pendaftaran->status }}">
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-800">
-                                    <a href="{{ route('pendaftaran.show', $pendaftaran) }}">{{ $pendaftaran->nama_lengkap }}</a>
+                                    <a href="{{ route('pendaftaran.show', $pendaftaran) }}">{{ $pendaftaran->nama_lengkap }}
+                                        @if(Auth::user()->role != "user")
+                                        @php $sumnilai = 0; @endphp
+                                        @foreach($nilais as $nilai)
+                                            @if($nilai->id_peserta == $pendaftaran->id)
+                                                @php
+                                                    $sumnilai += $nilai->total_score;
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                        @if($sumnilai > 0)
+                                            <small>(Nilai: {{ $sumnilai }})</small>
+                                        @endif
+                                        @endif
+                                    </a>
                                 </h3>
                                 <div class="mt-2 flex flex-wrap gap-2">
                                     <span class="px-2 py-1 rounded-full text-sm bg-blue-100 text-blue-700 custom-label-blue">

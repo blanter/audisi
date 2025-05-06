@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
+use App\Models\Nilai;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -29,8 +30,9 @@ class PendaftaranController extends Controller
         }
 
         $pendaftarans = $query->latest()->paginate(5);
+        $nilais = Nilai::get(['id_peserta','total_score']);
 
-        return view('pendaftaran.index', compact('pendaftarans'));
+        return view('pendaftaran.index', compact(['pendaftarans','nilais']));
     }
 
     // HALAMAN PENDAFTARAN AUDISI

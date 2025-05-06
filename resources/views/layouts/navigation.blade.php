@@ -113,9 +113,20 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="/terdaftar">
-                {{ __('Terdaftar') }}
+            <x-responsive-nav-link :href="route('pendaftaran.index')" :active="request()->routeIs('pendaftaran.index')">
+                {{ __('Peserta Audisi') }}
             </x-responsive-nav-link>
+            @if(Auth::user()->role == "admin")
+            <x-responsive-nav-link :href="route('standar-nilai.index')" :active="request()->routeIs('standar-nilai.index')">
+                {{ __('Standar Nilai') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('qrindex')" :active="request()->routeIs('qrindex')">
+                {{ __('Data QR Tamu') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.index')">
+                {{ __('Tasks List') }}
+            </x-responsive-nav-link>
+            @endif
         </div>
         @endauth
 
@@ -128,7 +139,7 @@
                 @endauth
                 @guest
                 <div class="font-medium text-base text-gray-800">Lifebook Academy</div>
-                <div class="font-medium text-sm text-gray-500">Guest/Student Access</div>
+                <div class="font-medium text-sm text-gray-500">Guest Access</div>
                 @endguest
             </div>
             @auth
@@ -136,6 +147,12 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+
+                @if(Auth::user()->role == "admin")
+                <x-responsive-nav-link :href="route('adminuser')">
+                    {{ __('User Settings') }}
+                </x-responsive-nav-link>
+                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

@@ -62,37 +62,49 @@ class ProfileController extends Controller
     // ADMIN MODE
     public function adminindex(Request $request)
     {
-        $query = User::query();
+        if(Auth::user()->role == "admin"){
+            $query = User::query();
 
-        if ($request->has('search') && $request->search !== null) {
-            $searchTerm = $request->search;
-            $query->where(function ($q) use ($searchTerm) {
-                $q->where('name', 'like', "%{$searchTerm}%")
-                ->orWhere('email', 'like', "%{$searchTerm}%");
-            });
+            if ($request->has('search') && $request->search !== null) {
+                $searchTerm = $request->search;
+                $query->where(function ($q) use ($searchTerm) {
+                    $q->where('name', 'like', "%{$searchTerm}%")
+                    ->orWhere('email', 'like', "%{$searchTerm}%");
+                });
+            }
+
+            $users = $query->get();
+            return view('profile.adminuser', compact('users'));
+        } else {
+            return back();
         }
-
-        $users = $query->get();
-        return view('profile.adminuser', compact('users'));
     }
 
     // ADMIN MODE
     public function admineditRole(Request $request, User $user)
     {
-        $request->validate([
-            'role' => 'required|in:admin,user,juri' // sesuaikan dengan role yg valid
-        ]);
+        if(Auth::user()->role == "admin"){
+            $request->validate([
+                'role' => 'required|in:admin,user,juri' // sesuaikan dengan role yg valid
+            ]);
 
-        $user->role = $request->role;
-        $user->save();
+            $user->role = $request->role;
+            $user->save();
 
-        return response()->json(['message' => 'Role updated successfully.']);
+            return response()->json(['message' => 'Role updated successfully.']);
+        } else {
+            return back();
+        }
     }
 
     // ADMIN MODE
     public function admindestroy(User $user)
     {
-        $user->delete();
-        return back()->with('status', 'User deleted.');
+        if(Auth::user()->role == "admin"){
+            $user->delete();
+            return back()->with('status', 'User deleted.');
+        } else {
+            return back();
+        }
     }
 }

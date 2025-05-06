@@ -57,7 +57,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <button type="button" onclick="addDeskripsi()" class="mt-2 bg-gray-300 text-sm px-2 py-1 rounded">+ Tambah Deskripsi</button>
+                        <button type="button" onclick="addDeskripsi()" class="mt-2 bg-gray-300 text-sm px-2 py-1 rounded">+ Tambah Tugas</button>
                     </div>
             
                     <div class="mt-6">

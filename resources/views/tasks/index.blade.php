@@ -24,7 +24,7 @@
             
                 <form method="GET" action="{{ route('tasks.index') }}" class="mb-4 custom-filter custom-f0">
                     <input type="text" name="search" value="{{ request('search') }}"
-                        placeholder="Cari apapun..."
+                        placeholder="Cari catatan tugas..."
                         class="w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring">
                 </form>
                 
