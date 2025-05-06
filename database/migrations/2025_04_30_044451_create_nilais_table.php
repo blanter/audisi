@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('level');
             $table->string('tipe');
             $table->integer('total_score');
+            $table->string('comments');
             $table->timestamps();
         });
     }

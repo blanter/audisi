@@ -59,6 +59,7 @@ class JuriController extends Controller
                 'id_peserta' => 'required|integer',
                 'id_juri' => 'required|integer',
                 'penilaian' => 'required|json',
+                'comments' => '',
             ]);
 
             $penilaian = json_decode($request->penilaian, true);
@@ -72,6 +73,7 @@ class JuriController extends Controller
                 'level' => $request->level,
                 'tipe' => $request->work,
                 'total_score' => $total,
+                'comments' => $request->comments,
             ]);
 
             $pendaftaran->update([

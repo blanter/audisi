@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nilai extends Model
 {
-    protected $fillable = ['id_peserta', 'id_juri', 'penilaian', 'level', 'tipe', 'total_score'];
+    protected $fillable = ['id_peserta', 'id_juri', 'penilaian', 'level', 'tipe', 'total_score', 'comments'];
     protected $casts = [
         'penilaian' => 'array',
     ];

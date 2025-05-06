@@ -42,6 +42,11 @@
                     <div id="assessment-area"></div>
                     <input type="hidden" name="penilaian" id="penilaian-hidden">
 
+                    <div class="mb-3">
+                        <label class="block" for="komentar_juri">Komentar Juri</label>
+                        <textarea name="comments" id="komentar_juri" rows="2" class="w-full border rounded px-3 py-2"></textarea>
+                    </div>
+
                     <div class="total_nilai mt-3 fw-bold fs-5 text-success">Nilai: <b>{{$datanilai}}/100</b></div>
                 
                     <button id="submit-btn" type="button" class="small-button btn btn-primary mt-4">
@@ -91,6 +96,12 @@
                                     </span>
                                 @endforeach
                             </div>
+                        @endif
+
+                        @if($penilaian->comments != NULL)
+                        <h4 class="text-sm font-semibold text-gray-800 mt-3">
+                            Komentar: {{ $penilaian->comments }}
+                        </h4>
                         @endif
             
                         <div class="mt-3 text-sm text-gray-500">
