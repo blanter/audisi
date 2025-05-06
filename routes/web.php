@@ -61,6 +61,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tasks/edit/{task}', [TaskController::class, 'edit'])->name('tasks.edit');
     Route::put('/tasks/edit/{task}', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('/tasks/delete/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+    // Route Admin Mode
+    Route::get('/adminuser', [ProfileController::class, 'adminindex'])->name('adminuser');
+    Route::post('/adminuser/{user}/editrole', [ProfileController::class, 'admineditRole'])->name('editmodeadmin');
+    Route::delete('/adminuser/{user}', [ProfileController::class, 'admindestroy'])->name('destroyuser');
 });
 
 // Route QRCode (NO LOGIN)
