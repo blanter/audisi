@@ -38,7 +38,7 @@
 
             <!-- Footer -->
             <div class="simple-footer max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <span>© 2025 - Production Lifebook Academy (App v0.07)</span>
+                <span>© 2025 - Production Lifebook Academy (App v1.08)</span>
             </div>
         </div>
     </body>

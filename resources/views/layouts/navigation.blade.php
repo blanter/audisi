@@ -30,7 +30,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-6 sm:flex">
                     <x-nav-link :href="route('qrindex')" :active="request()->routeIs('qrindex')">
-                        {{ __('Data QR Tamu') }}
+                        {{ __('QR Tamu') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-6 sm:flex">
@@ -121,7 +121,7 @@
                 {{ __('Standar Nilai') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('qrindex')" :active="request()->routeIs('qrindex')">
-                {{ __('Data QR Tamu') }}
+                {{ __('QR Tamu') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.index')">
                 {{ __('Tasks List') }}
