@@ -41,6 +41,8 @@
                     <input type="hidden" name="id_juri" value="{{ Auth::user()->id }}" required>
                     <div id="assessment-area"></div>
                     <input type="hidden" name="penilaian" id="penilaian-hidden">
+
+                    <div class="total_nilai mt-3 fw-bold fs-5 text-success">Nilai: <b>{{$datanilai}}/100</b></div>
                 
                     <button id="submit-btn" type="button" class="small-button btn btn-primary mt-4">
                         Simpan Penilaian
@@ -142,7 +144,7 @@
                         </tr>
                         <tr>
                             <td class="py-2 font-semibold w-1/3"><b>Nilai Sementara</b></td>
-                            <td class="py-2"><b class="custom-label">{{$datanilai}}</b></td>
+                            <td class="py-2"><b class="custom-label datanilai">{{$datanilai}}</b></td>
                         </tr>
                         <tr>
                             <td class="py-2 font-semibold align-top">List Prop / Link Drive</td>
