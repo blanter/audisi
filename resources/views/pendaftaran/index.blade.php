@@ -79,7 +79,7 @@
                             @if(Auth::user()->role == "admin")
                             <!-- EDIT, HAPUS, CHECK HANYA ADMIN -->
                                 <div class="flex flex-col items-end text-sm space-y-1">
-                                    @if($pendaftaran->status != 2)
+                                    @if($pendaftaran->status == 1)
                                     <form action="{{ route('pendaftaran.check', $pendaftaran) }}" method="POST" onsubmit="return confirm('Yakin ingin menandakan lulus production?');">
                                         @csrf
                                         @method('PUT')
